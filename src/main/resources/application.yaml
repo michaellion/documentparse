@@ -1,0 +1,40 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates
+    suffix: .html
+    mode: HTML
+    cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+
+
+  ###   devtools ###
+  devtools:
+    restart:
+      enabled: true
+
+  ### file size limits
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://114.116.131.234:5432/ta404
+    password: yhbcp
+    username: yhbcp
+file:
+  uploaddir: E:\\testdir\\
+#  mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+mybatis:
+  mapper-locations: classpath:mapper/*/*.xml
+  type-aliases-package: com.yinhai.store.mapper.*
+#  mybatis.type-aliases-package=com.testxml.domain

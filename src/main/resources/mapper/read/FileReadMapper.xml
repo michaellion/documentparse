@@ -1,0 +1,44 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yinhai.store.mapper.read.FileReadMapper">
+
+    <resultMap type="com.yinhai.store.entity.FileDetails" id="filemap">
+        <id column="id" property="id"/>
+        <result column="uploader" property="uploader"/>
+        <result column="upload_date" property="uploadDate"/>
+        <result column="file_size" property="fileSize"/>
+        <result column="file_type" property="fileType"></result>
+        <result column="file_path" property="filePath" />
+        <result column="enable" property="enable" />
+    </resultMap>
+
+    <select id="listFiles" parameterType="java.lang.String" resultMap="filemap">
+      select * from file_details
+    </select>
+
+    <select id="getFileById" parameterType="java.lang.Integer" resultMap="filemap">
+        select * from file_details where id = #{id}
+    </select>
+
+    <select id="getFileByUploader" resultMap="filemap">
+        select * from file_details where uploader = #{uploader}
+    </select>
+
+    <select id="findEnableFilesLike"
+           resultMap="filemap">
+        SELECT * FROM BLOG
+        <where>
+            <if test="state != null">
+                state = #{state}
+            </if>
+            <if test="title != null">
+                AND title like #{title}
+            </if>
+            <if test="author != null and author.name != null">
+                AND author_name like #{author.name}
+            </if>
+        </where>
+    </select>
+</mapper>
