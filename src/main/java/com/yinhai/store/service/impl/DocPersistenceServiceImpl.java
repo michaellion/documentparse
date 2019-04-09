@@ -6,6 +6,7 @@ import com.yinhai.search.entity.DocDetail;
 import com.yinhai.store.service.DocPersistenceService;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author licb
  * @create 2019-04-04 13:57
  **/
-@Component("docPersistenceService")
+@Service
 public class DocPersistenceServiceImpl implements DocPersistenceService {
     @Resource
     private ElasticSearchClient elasticSearchClient;
